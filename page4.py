@@ -155,7 +155,7 @@ with tab2:
     loyalty_dist = (
         df["seven_of_seven_same_party"]
         .value_counts()
-        .rename(index={True: "7/7 Нэг нам", False: "Бусад"})
+        .rename(index={True: "6/6 Нэг нам", False: "Бусад"})
         .reset_index()
     )
 
@@ -213,7 +213,7 @@ with tab2:
         )
     )
 
-    st.subheader("Бүрэн намын тууштай байдал (6/6)")
+    st.subheader("Нэг намд үнэнч байдал (6/6)")
     st.plotly_chart(fig, use_container_width=True)
 
 
@@ -248,7 +248,7 @@ with tab2:
         hole=0.5,
         title=(
             "<b>6/6 Нэг намд өгсөн саналын намын хуваарилалт</b><br>"
-            "<sup>Бүрэн намын тууштай сонгогчид</sup>"
+            "<sup>Нэг намд үнэнч сонгогчид</sup>"
         ),
         color_discrete_sequence=px.colors.qualitative.Set2
     )

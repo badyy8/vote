@@ -59,6 +59,7 @@ pages = {
     "Тайлан": [
         st.Page("page1.py", title="OVERVIEW"),
         st.Page("page2.py", title="PARTY MIXING"),
+        st.Page("page5.py", title="PARTY COMBINATION (CITY)"),
         st.Page("page3.py", title="CANDIDATE BEHAVIOR"),
         st.Page("page4.py", title="CROSS-CONTEST ALIGNMENT"),
     ],
