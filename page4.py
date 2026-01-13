@@ -8,7 +8,7 @@ df = load_data()
 # ======================================================
 # Хот – Дүүргийн намын уялдаа холбоо
 # ======================================================
-tab1,tab2 = st.tabs(['Хот – Дүүргийн намын уялдаа холбоо', 'Нэг намд 7/7 санал өгсөн сонгогчид'])
+tab1,tab2 = st.tabs(['Хот – Дүүргийн намын уялдаа холбоо', 'Нэг намд 6/6 санал өгсөн сонгогчид'])
 
 with tab1:
     city_party_cols = ["party_1", "party_2", "party_3", "party_4"]
@@ -180,13 +180,13 @@ with tab2:
         text="Саналын хуудасны тоо",
         custom_data=["Хувь (%)"],
         title=(
-            "<b>Нэг намд 7/7 санал өгсөн сонгогчид</b><br>"
+            "<b>Нэг намд 6/6 санал өгсөн сонгогчид</b><br>"
             "<sup>Хот (4) + Дүүрэг (2) = Бүрэн намын тууштай байдал</sup>"
         ),
         template="plotly_white",
         color="Саналын хэв шинж",
         color_discrete_map={
-            "7/7 Нэг нам": "#2ecc71",
+            "6/6 Нэг нам": "#2ecc71",
             "Бусад": "#e74c3c"
         }
     )
@@ -213,12 +213,12 @@ with tab2:
         )
     )
 
-    st.subheader("Бүрэн намын тууштай байдал (7/7)")
+    st.subheader("Бүрэн намын тууштай байдал (6/6)")
     st.plotly_chart(fig, use_container_width=True)
 
 
     # ======================================================
-    # Donut chart: Party share among 7/7 loyal voters
+    # Donut chart: Party share among 6/6 loyal voters
     # ======================================================
 
     # Filter only fully loyal ballots
@@ -247,7 +247,7 @@ with tab2:
         values="Саналын хуудасны тоо",
         hole=0.5,
         title=(
-            "<b>7/7 Нэг намд өгсөн саналын намын хуваарилалт</b><br>"
+            "<b>6/6 Нэг намд өгсөн саналын намын хуваарилалт</b><br>"
             "<sup>Бүрэн намын тууштай сонгогчид</sup>"
         ),
         color_discrete_sequence=px.colors.qualitative.Set2
@@ -265,5 +265,5 @@ with tab2:
         margin=dict(t=90, b=40, l=40, r=40)
     )
 
-    st.subheader("7/7 Намын тууштай санал: Намын эзлэх хувь")
+    st.subheader("6/6 Намын тууштай санал: Намын эзлэх хувь")
     st.plotly_chart(fig_donut, use_container_width=True)
