@@ -376,6 +376,68 @@ with tab1:
 
         """)
 
+    with st.expander("4 хослол: Цэвэр намын санал – Нам тус бүрээр", expanded=False):
+
+        # --------------------------------------------------
+        # 1. Filter pure party ballots (4/4)
+        # --------------------------------------------------
+        df_4 = df[df["party_combination_pattern"] == "4"].copy()
+
+        # Party receiving all 4 votes
+        df_4["pure_party"] = df_4["party_1"]
+
+        party_dist = (
+            df_4["pure_party"]
+            .value_counts()
+            .reset_index()
+        )
+
+        party_dist.columns = ["Нам", "Саналын хуудасны тоо"]
+
+        # Percent
+        total_4 = party_dist["Саналын хуудасны тоо"].sum()
+        party_dist["Хувь (%)"] = (
+            party_dist["Саналын хуудасны тоо"] / total_4 * 100
+        ).round(2)
+
+        # --------------------------------------------------
+        # 2. Plot
+        # --------------------------------------------------
+        fig = px.bar(
+            party_dist,
+            x="Саналын хуудасны тоо",
+            y="Нам",
+            orientation="h",
+            text="Хувь (%)",
+            title=(
+                "<b>Цэвэр намын санал (4/4)</b><br>"
+                "<sup>Нэг саналын хуудсан дээр 4 төлөөлөгчийг бүрэн авсан намууд</sup>"
+            ),
+            template="plotly_white",
+            color="Нам",
+            color_discrete_map=party_colors
+        )
+
+        fig.update_traces(
+            texttemplate="%{text}%",
+            textposition="outside",
+            cliponaxis=False,
+            marker_line_width=1,
+            opacity=0.9
+        )
+
+        fig.update_layout(
+            xaxis_title="<b>Саналын хуудасны тоо</b>",
+            yaxis_title=None,
+            showlegend=False,
+            height=500,
+            margin=dict(l=60, r=90, t=80, b=50),
+            yaxis=dict(categoryorder="total ascending"),
+            xaxis=dict(showgrid=True, gridcolor="#f0f0f0")
+        )
+
+        st.plotly_chart(fig, use_container_width=True)
+        #st.dataframe(party_dist,hide_index = True, use_container_width=True)
 
 
     # ======================================================
